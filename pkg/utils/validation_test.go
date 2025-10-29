@@ -1,3 +1,4 @@
+// Package utils provides utility functions for validating URIs and service names.
 package utils
 
 import (

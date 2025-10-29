@@ -1,6 +1,12 @@
+- name: "automated-sync"
+  description: "Automated sync PR, e.g. from a fork or external repo"
+  color: 006b75
 - name: "automerge"
-  description: "Used for automatic merging"
+  description: "Label to automatically merge pull requests that meet all required conditions"
   color: FEF2C0
+- name: "automerge-enabled"
+  description: "Detected automerge PR and enabled automerge"
+  color: 006b75
 - name: "bug-P1"
   description: "Highest rated bug or issue, affects all"
   color: b23128
@@ -13,6 +19,9 @@
 - name: "chore"
   description: "Simple dependency updates or version bumps"
   color: 006b75
+- name: "coverage-override"
+  description: "Override coverage requirements for this PR"
+  color: ff8c00
 - name: "dependencies"
   description: "Dependency updates, version bumps, etc."
   color: 006b75
@@ -28,6 +37,9 @@
 - name: "documentation"
   description: "Improvements or additions to documentation"
   color: 0075ca
+- name: "epic"
+  description: "Large feature or initiative spanning multiple tasks"
+  color: 002f6c
 - name: "feature"
   description: "Any new significant addition"
   color: 0e8a16
@@ -43,6 +55,9 @@
 - name: "idea"
   description: "Any idea, suggestion"
   color: cccccc
+- name: "npm"
+  description: "Used for referencing npm packages and dependencies"
+  color: 006b75
 - name: "performance"
   description: "Performance improvements or optimizations"
   color: 8bc34a
@@ -79,9 +94,15 @@
 - name: "stale"
   description: "Old, unused, stale"
   color: c2e0c6
+- name: "task"
+  description: "Actionable task or work item"
+  color: 0288d1
 - name: "test"
   description: "Unit tests, mocking, integration testing"
   color: c2e0c6
+- name: "tested"
+  description: "Successfully tested and ready for review"
+  color: 4fc3f7
 - name: "ui-ux"
   description: "Anything GUI related"
   color: fbca04
