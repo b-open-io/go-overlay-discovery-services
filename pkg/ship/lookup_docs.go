@@ -51,42 +51,45 @@ When you call ` + "`lookup(question)`" + ` on the SHIP Lookup Service, you must 
 ### Examples
 
 1. **Find all SHIP records**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_ship',
-     query: 'findAll'
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   import "github.com/bsv-blockchain/go-sdk/overlay/lookup"
+
+   resolver := lookup.NewLookupResolver()
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_ship",
+       Query:   "findAll",
+   }, 10000)
    ` + "```" + `
 
 2. **Find by domain**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_ship',
-     query: { domain: 'https://myexample.com' }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_ship",
+       Query: map[string]interface{}{
+           "domain": "https://myexample.com",
+       },
+   }, 10000)
    ` + "```" + `
 
 3. **Find by topics**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_ship',
-     query: { topics: ['tm_bridge', 'tm_sync'] }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_ship",
+       Query: map[string]interface{}{
+           "topics": []string{"tm_bridge", "tm_sync"},
+       },
+   }, 10000)
    ` + "```" + `
 
 4. **Find by domain AND topics**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_ship',
-     query: {
-       domain: 'https://myexample.com',
-       topics: ['tm_bridge']
-     }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_ship",
+       Query: map[string]interface{}{
+           "domain": "https://myexample.com",
+           "topics": []string{"tm_bridge"},
+       },
+   }, 10000)
    ` + "```" + `
 
 ---

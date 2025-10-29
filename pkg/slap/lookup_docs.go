@@ -51,42 +51,45 @@ When you call ` + "`lookup(question)`" + ` on the SLAP Lookup Service, you must 
 ### Examples
 
 1. **Find all SLAP records**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_slap',
-     query: 'findAll'
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   import "github.com/bsv-blockchain/go-sdk/overlay/lookup"
+
+   resolver := lookup.NewLookupResolver()
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_slap",
+       Query:   "findAll",
+   }, 10000)
    ` + "```" + `
 
 2. **Find by domain**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_slap',
-     query: { domain: 'https://mylookup.example' }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_slap",
+       Query: map[string]interface{}{
+           "domain": "https://mylookup.example",
+       },
+   }, 10000)
    ` + "```" + `
 
 3. **Find by service (most common)**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_slap',
-     query: { service: 'ls_treasury' }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_slap",
+       Query: map[string]interface{}{
+           "service": "ls_treasury",
+       },
+   }, 10000)
    ` + "```" + `
 
 4. **Find by domain AND service**:
-   ` + "```" + `js
-   const question = {
-     service: 'ls_slap',
-     query: {
-       domain: 'https://mylookup.example',
-       service: 'ls_treasury'
-     }
-   }
-   const results = await overlayClient.lookup(question)
+   ` + "```" + `go
+   results, err := resolver.Query(ctx, &lookup.LookupQuestion{
+       Service: "ls_slap",
+       Query: map[string]interface{}{
+           "domain":  "https://mylookup.example",
+           "service": "ls_treasury",
+       },
+   }, 10000)
    ` + "```" + `
 
 ---
